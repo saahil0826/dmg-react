@@ -1,18 +1,4 @@
-@font-face {
-  font-family: "Calibri";
-  src: url("./resources/calibri font sv/Calibri Regular.ttf") format("truetype");
-}
 
-,
-@font-face {
-  font-family: "Calibri Bold";
-  src: url("./resources/calibri font sv/Calibri-Bold.ttf") format("truetype");
-}
-
-* {
-  box-sizing: border-box;
-  font-family: "Calibri" !important;
-}
 
 .bg {
   background-color: #e0e0e0;
@@ -112,6 +98,7 @@ input[type="text"] {
   display: block;
   position: absolute;
   margin-top: 14px;
+  left: -30px;
   background-color: black;
   min-width: 160px;
   z-index: 1;

@@ -42,6 +42,13 @@ table {
 	border-spacing: 0;
 }
 
-*{
-	box-sizing: border-box;
+
+@font-face {
+  font-family: "Calibri";
+  src: url("./resources/calibri font sv/Calibri Regular.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Calibri" !important;
 }
