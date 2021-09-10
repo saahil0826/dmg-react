@@ -1,41 +1,43 @@
 import React, { Component } from "react";
 
+import withCounter from './withCounter';
+
 class Product extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      quantity: this.props.product.quantity,
-      total: 0,
-      stock: this.props.product.stock
-    };
+//     this.state = {
+//       quantity: this.props.product.quantity,
+//       total: 0,
+//       stock: this.props.product.stock
+//     };
   }
 
   // increase
-  increment = () => {
-    if (this.state.stock > 0) {
-      this.setState(prevState => {
-        return {
-          quantity: prevState.quantity + 4,
-          stock: prevState.stock - 4
-        };
-      });
-    }
-  };
+//   increment = () => {
+//     if (this.state.stock > 0) {
+//       this.setState(prevState => {
+//         return {
+//           quantity: prevState.quantity + 4,
+//           stock: prevState.stock - 4
+//         };
+//       });
+//     }
+//   };
 
-  decrement = () => {
-    if (this.state.quantity > 0) {
-      this.setState(prevState => {
-        return {
-          quantity: prevState.quantity - 4,
-          stock: prevState.stock + 4
-        };
-      });
-    }
-  };
+//   decrement = () => {
+//     if (this.state.quantity > 0) {
+//       this.setState(prevState => {
+//         return {
+//           quantity: prevState.quantity - 4,
+//           stock: prevState.stock + 4
+//         };
+//       });
+//     }
+//   };
 
   render() {
     const { name, price, id, vehicleType, discount } = this.props.product;
-    const { stock } = this.state;
+    const { stock } = this.props;
 
     return (
       <>
@@ -69,18 +71,18 @@ class Product extends Component {
               <span>Price ₪{price}</span>
             </div>
             <div className="counter" id="main">
-              <span className="incre" onClick={() => this.decrement()}>
+              <span className="incre" onClick={() => this.props.decrement()}>
                 -
               </span>
-              <span className="number">{this.state.quantity}</span>
-              <span className="incre" onClick={() => this.increment()}>
+              <span className="number">{this.props.quantity}</span>
+              <span className="incre" onClick={() => this.props.increment()}>
                 +
               </span>
             </div>
             <div className="text" id="total1">
               <p>
                 Total{" "}
-                <span className="bold">₪{this.state.quantity * price}</span>
+                <span className="bold">₪{this.props.quantity * price}</span>
               </p>
             </div>
             <div
@@ -97,7 +99,7 @@ class Product extends Component {
                 />
               )}
               <span>
-                {this.state.stock !== 0 ? "Add to cart" : "Notify me!"}
+                {this.props.stock !== 0 ? "Add to cart" : "Notify me!"}
               </span>
             </div>
           </div>
@@ -140,18 +142,18 @@ class Product extends Component {
                 <div class="text width-fixer" >
                   <p>
                     Total{" "}
-                    <span class="bold">₪{this.state.quantity * price}</span>
+                    <span class="bold">₪{this.props.quantity * price}</span>
                   </p>
                   <span class="red">{discount!==0?`Save ₪${discount}!`:null}</span>
                 </div>
               </div>
               <div class="third-row">
                 <div class="counter">
-                  <span class="incre" onClick={() => this.decrement()}>
+                  <span class="incre" onClick={() => this.props.decrement()}>
                     -
                   </span>
-                  <span class="number">{this.state.quantity}</span>
-                  <span class="incre" onClick={() => this.increment()}>
+                  <span class="number">{this.props.quantity}</span>
+                  <span class="incre" onClick={() => this.props.increment()}>
                     +
                   </span>
                 </div>
@@ -172,7 +174,7 @@ class Product extends Component {
                   )}
                   <span>
                     {" "}
-                    {this.state.stock !== 0 ? "Add to cart" : "Notify me!"}
+                    {this.props.stock !== 0 ? "Add to cart" : "Notify me!"}
                   </span>
                 </div>
               </div>
@@ -184,4 +186,4 @@ class Product extends Component {
   }
 }
 
-export default Product;
+export default withCounter(Product);
